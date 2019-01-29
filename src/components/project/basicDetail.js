@@ -39,10 +39,31 @@ const BasicDetails = (props) => {
                                         </div>
                                     </div>
                                     <div className="col-md-6">
-                                        <h3 className="mb-3">Well</h3>
-                                        <div className="jumbotron">
-                                            Zebras have excellent eyesight. It is believed that they can see in color. Like most ungulates, the zebra's eyes are on the sides of its head, giving it a wide field of view.
-                                    </div>
+                                    <table class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">#</th>
+                                            <th scope="col">Full Name </th>
+                                            <th scope="col">UserName</th>
+                                            <th scope="col">Role</th>
+                                            <th> Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {
+                                            props.userList && props.userList.map((user,ukey)=>{
+                                                return <tr key={ukey}>
+                                                      <td>{ukey+1}</td>
+                                                      <td>{user.firstName} {user.lastName}</td>
+                                                      <td>{user.userName}</td>
+                                                      <td>{user.role.role}</td>
+                                                      <td><button onClick={(e)=> props.addUserToProjectHandler(user._id)} className="btn btn-primary"><i className="fa fa-plus"></i></button> </td>
+                                                </tr>
+                                            })
+                                        }
+                                       
+                                    </tbody>
+                                </table>
                                     </div>
                                 </div>
                                 <div className="row">

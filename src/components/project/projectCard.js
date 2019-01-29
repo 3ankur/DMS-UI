@@ -11,7 +11,7 @@ const ProjectCard = (props) => {
                             <img class="align-self-center rounded-circle mr-3" alt="" src={projectImage} />
                         </a> */}
                         <div class="media-body">
-                            <h2 class="text-light display-6">{props.info && props.info.projectName}</h2>
+                            <h2 class="text-light display-6"><a style={{"color":"#f8f9fa"}} href={`#/project/projectDetails/${props.info._id}`} >{props.info && props.info.projectName}</a> </h2>
                             {/* <p>Project Manager</p> */}
                         </div>
                     </div>

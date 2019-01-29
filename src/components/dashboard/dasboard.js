@@ -61,7 +61,7 @@ this.getProjectList();
             <div className="row">
             {
                  this.state.projectList.map((pdata)=>{
-                    return <ProjectCard info={pdata} /> 
+                    return <ProjectCard key={pdata._id} info={pdata} /> 
                 })
             }
             

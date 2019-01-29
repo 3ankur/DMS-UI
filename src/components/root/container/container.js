@@ -7,6 +7,8 @@ import HtmlComponents from '../../html-component/mainHTMComponent';
 import Dashboard from '../../dashboard/dasboard';
 import ModalRoot from '../modalRoot';
 import ProjectDetails from '../../project/projectDetails';
+import UserContainer from '../../user/users';
+
 class Container extends Component{
     constructor(props){
         super(props);
@@ -19,7 +21,8 @@ class Container extends Component{
                 <Layout>
                     <Route exact path='/'  component={() => <Dashboard />} />
                     <Route exact path='/project'  component={() => <Dashboard />} />
-                    <Route exact path='/project/projectDetails/:projectId'  component={() => <ProjectDetails />} />
+                    <Route exact path='/user'  component={() => <UserContainer />} />
+                    <Route exact path='/project/projectDetails/:projectId'  component={ProjectDetails} />
                     <Route  path='/html-component'  component={HtmlComponents} />
                     <ModalRoot />
                 </Layout>

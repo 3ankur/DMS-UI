@@ -17,21 +17,11 @@ const SideBar = (props) => {
                     <li>
                         <a href="#"> <i className="menu-icon fa fa-dashboard"></i>Dashboard </a>
                     </li>
-                    <h3 className="menu-title">UI elements</h3>
+                    <h3 className="menu-title">Users</h3>
                     <li className="menu-item-has-children dropdown">
-                        <a href="#" className="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"> <i className="menu-icon fa fa-laptop"></i>Components</a>
+                        <a href="#" className="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"> <i className="menu-icon fa fa-laptop"></i>Actions</a>
                         <ul className="sub-menu children dropdown-menu">
-                            <li><i className="fa fa-puzzle-piece"></i><a href="#/html-component/buttons">Buttons</a></li>
-                            <li><i className="fa fa-id-badge"></i><a href="#/html-component/badges">Badges</a></li>
-                            <li><i className="fa fa-bars"></i><a href="#/html-component/tabs">Tabs</a></li>
-                            <li><i className="fa fa-share-square-o"></i><a href="#/html-component/social-button">Social Buttons</a></li>
-                            <li><i className="fa fa-id-card-o"></i><a href="#/html-component/cards">Cards</a></li>
-                            <li><i className="fa fa-exclamation-triangle"></i><a href="#/html-component/alerts">Alerts</a></li>
-                            <li><i className="fa fa-spinner"></i><a href="#/html-component/progress-bars">Progress Bars</a></li>
-                            <li><i className="fa fa-fire"></i><a href="#">Modals</a></li>
-                            <li><i className="fa fa-book"></i><a href="#/html-component/switches">Switches</a></li>
-                            <li><i className="fa fa-th"></i><a href="#/html-component/grids">Grids</a></li>
-                            <li><i className="fa fa-file-word-o"></i><a href="#/html-component/typoGraphy">Typography</a></li>
+                            <li><i className="fa fa-users"></i><a href="#/user">Users</a></li>
                         </ul>
                     </li>
                     <li className="menu-item-has-children dropdown">
