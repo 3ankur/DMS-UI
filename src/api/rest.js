@@ -70,6 +70,13 @@ export default class Rest {
     })
   }
 
+    //get story priority
+    static getStoryPriority(id){
+      return  fetch(`project/storyPriority`, {
+       method: 'GET'
+     })
+   }
+
 
 
 

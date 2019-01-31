@@ -30,12 +30,10 @@ const BasicDetails = (props) => {
                                             <div className="col-9">
                                                 <h3><span><i class="fa fa-group"></i></span> Team</h3>
                                             </div>
-                                            <div className="col-3">
-                                                <button type="button" onClick={props.addNewMember} class="btn btn-secondary btn-sm"><i class="fa fa-plus"></i>&nbsp; Member</button>
-                                            </div>
+                                            
                                         </div>
                                         <div className="col-12" style={{ borderTop: "1px solid #CCC" }}>
-                                            <ProjectTeam />
+                                            <ProjectTeam projectTeam={props.projectTeam} />
                                         </div>
                                     </div>
                                     <div className="col-md-6">
@@ -68,9 +66,13 @@ const BasicDetails = (props) => {
                                 </div>
                                 <div className="row">
                                     <div className="col-12">
-                                        <h2 className="display-5 my-3"><span><i class="fa fa-desktop"></i></span> Activity</h2>
-                                        <hr />
+                                       <div className="col-9"><h2 className="display-5 my-3"><span><i class="fa fa-desktop"></i></span> Activity</h2>
+                                           </div> 
+                                           <div className="col-3 float-right">
+                                                <button type="button" onClick={props.addNewStoryHandeler} class="btn btn-secondary btn-sm"><i class="fa fa-plus"></i>&nbsp; Story</button>
+                                            </div>
                                     </div>
+                                   <div className="col-12"><hr /></div> 
                                     <div className="col-12">
                                         <ul class="list-group list-group-flush">
                                             <li class="list-group-item"><a href="#"> <i class="fa fa-envelope-o"></i> Mail Inbox <span class="badge badge-primary pull-right">10</span></a></li>

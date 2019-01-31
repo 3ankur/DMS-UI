@@ -61,7 +61,6 @@ class Users extends Component{
 
 function mapDispatchToProps(dispatch) {
     return {
-
         modalAction : bindActionCreators(modalAction,dispatch)
     };
 }
