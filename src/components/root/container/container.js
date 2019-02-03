@@ -8,6 +8,7 @@ import Dashboard from '../../dashboard/dasboard';
 import ModalRoot from '../modalRoot';
 import ProjectDetails from '../../project/projectDetails';
 import UserContainer from '../../user/users';
+import UserLogin from '../login/login';
 
 class Container extends Component{
     constructor(props){
@@ -20,6 +21,7 @@ class Container extends Component{
             <Switch>
                 <Layout>
                     <Route exact path='/'  component={() => <Dashboard />} />
+                    <Route exact path='/login'  component={UserLogin} />
                     <Route exact path='/project'  component={() => <Dashboard />} />
                     <Route exact path='/user'  component={() => <UserContainer />} />
                     <Route exact path='/project/projectDetails/:projectId'  component={ProjectDetails} />
