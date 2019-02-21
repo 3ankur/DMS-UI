@@ -9,6 +9,20 @@ import ModalRoot from '../modalRoot';
 import ProjectDetails from '../../project/projectDetails';
 import UserContainer from '../../user/users';
 import UserLogin from '../login/login';
+import {
+    progressBarFetch,
+    setOriginalFetch,
+    ProgressBar
+  } from "react-fetch-progressbar";
+
+  setOriginalFetch(window.fetch);
+  window.fetch = progressBarFetch;
+  
+  const styles = {
+    marginTop: "100px",
+    fontFamily: "sans-serif",
+    textAlign: "center"
+  };
 
 class Container extends Component{
     constructor(props){
@@ -17,9 +31,11 @@ class Container extends Component{
 
     render(){
         return(
+            
             <HashRouter>
             <Switch>
                 <Layout>
+                <ProgressBar style={{ marginBottom: "10px" }} />
                     <Route exact path='/'  component={() => <Dashboard />} />
                     <Route exact path='/login'  component={UserLogin} />
                     <Route exact path='/project'  component={() => <Dashboard />} />

@@ -77,6 +77,7 @@ this.getProjectTeam();
              this.props.modalAction.hideModal();
           },
           team:this.state.projectTeam,
+          projectId : this.props.match.params.projectId,
         className:"alertPopup"
         });
 

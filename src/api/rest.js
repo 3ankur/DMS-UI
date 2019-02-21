@@ -77,6 +77,29 @@ export default class Rest {
      })
    }
 
+   //application login 
+   
+    //get story priority
+    static login(data){
+      return  fetch(`user/login`, {
+        method: 'POST',
+        redirect: "follow", // manual, *follow, error
+        referrer: "no-referrer", // no-referrer, *client
+        headers: {
+          "Content-Type": "application/json",
+      },
+        body:JSON.stringify(data) 
+      })
+   }
+
+
+   static newStory(data){
+    return fetch('project/addTask', {
+      method: 'POST',
+      body: data
+    })
+   }
+
 
 
 
