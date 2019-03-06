@@ -2,13 +2,16 @@
 import React, { Component } from 'react';
 import { Route, HashRouter, Switch, Redirect } from 'react-router-dom';
 import Layout from '../layout/layout';
-import Test from '../../html-component/test';
-import HtmlComponents from '../../html-component/mainHTMComponent';
 import Dashboard from '../../dashboard/dasboard';
 import ModalRoot from '../modalRoot';
 import ProjectDetails from '../../project/projectDetails';
 import UserContainer from '../../user/users';
 import UserLogin from '../login/login';
+import  Cookies from "js-cookie";
+import UserActivity from "../../user-tasks/UserDasboard";
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 import {
     progressBarFetch,
     setOriginalFetch,
@@ -24,6 +27,50 @@ import {
     textAlign: "center"
   };
 
+  const UserAuth = {
+    isAuthenticated: false,
+    authenticate(com,rxProps) {
+    
+        if(Cookies.get("authtoken")){
+            let extractToken = JSON.parse(Cookies.get("authtoken"));
+                if( extractToken.role=="admin"){
+                    return true;
+                }
+                else{
+                     return true;
+                }
+
+        }
+        else{
+            return false;
+        }
+        
+
+    // this.isAuthenticated = true;
+    
+    // let infoL = {}  //Common.getLoginUserInfo();
+    // const accessInfo = infoL ? infoL : rxProps.rxProps.loginUserInfo;
+ 
+    // return true
+    }
+    };
+
+  const PrivateRoute = ({ component : Component , ...rest}) =>(
+    <Route {...rest} render = { (props) =>
+    
+    ( UserAuth.authenticate(props,rest) ? (
+    <Component {...props} />
+    ) :
+    <Redirect
+    to={{
+    pathname: "/",
+    state: { from: props.location }
+    }}
+    />
+    ) }
+    />
+    )
+
 class Container extends Component{
     constructor(props){
         super(props);
@@ -36,13 +83,15 @@ class Container extends Component{
             <Switch>
                 <Layout>
                 <ProgressBar style={{ marginBottom: "10px" }} />
+                <Route exact path='/user-activity'  component={() => <UserActivity />} />
                     <Route exact path='/'  component={() => <Dashboard />} />
                     <Route exact path='/login'  component={UserLogin} />
                     <Route exact path='/project'  component={() => <Dashboard />} />
                     <Route exact path='/user'  component={() => <UserContainer />} />
                     <Route exact path='/project/projectDetails/:projectId'  component={ProjectDetails} />
-                    <Route  path='/html-component'  component={HtmlComponents} />
+                   
                     <ModalRoot />
+                    <ToastContainer />
                 </Layout>
             </Switch>
             </HashRouter>

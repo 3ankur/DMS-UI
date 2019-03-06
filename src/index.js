@@ -7,6 +7,7 @@ import './vendors/themify-icons/css/themify-icons.css';
 import './vendors/flag-icon-css/css/flag-icon.min.css';
 import './vendors/selectFX/css/cs-skin-elastic.css'
 import './assets/css/style.css';
+import './assets/css/custom.css';
 // import $ from "jquery";
 // import 'bootstrap';
 import { Provider } from 'react-redux';

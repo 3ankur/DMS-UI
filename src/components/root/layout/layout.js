@@ -23,7 +23,7 @@ console.log("this",this.props.location,"/login");
                 this.props.location.pathname!=="/login" ? 
                 <div className="">
                 <SideBar />
-                 <div id="right-panel" class="right-panel" style={{width:"100%"}}>
+                 <div id="right-panel" className="right-panel" style={{width:"100%"}}>
                      <Header />
                      <BreadCrumbs />
                      <div className="content mt-3">

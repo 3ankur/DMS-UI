@@ -12,7 +12,8 @@ class ProjectDetails extends React.Component{
 
         this.state = {
             userList:[],
-            projectTeam:[]
+            projectTeam:[],
+            recentActivity:[]
         }
     }
 
@@ -40,9 +41,25 @@ class ProjectDetails extends React.Component{
         })
     }
 
+
+    getProjectActivity(){
+
+        ApiService.getProjectActivity(this.props.match.params.projectId)
+        .then(res => res.json())
+        .then((response)=>{
+            console.log(response);
+            response &&  this.setState({recentActivity:response})
+
+        })
+        .catch((err)=>{
+        })
+
+    }
+
     componentDidMount(){
 this.getUserList();
 this.getProjectTeam();
+this.getProjectActivity();
     
     }
 
@@ -91,6 +108,7 @@ this.getProjectTeam();
                  addUserToProjectHandler ={this.addUserToProject}
                  projectTeam={this.state.projectTeam}
                  addNewStoryHandeler={this.addNewStory}
+                 recentActivity={this.state.recentActivity}
                  />
             )
     }

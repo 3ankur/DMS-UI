@@ -117,7 +117,7 @@ class AddUserModal extends React.Component {
                     <form onSubmit={this.createProject}>
                             <div class="form-group">
                                 <label for="company" class=" form-control-label">First Name</label>
-                                <input type="text" placeholder="Project name" value={this.state.firstName} name="firstName" onChange={this.textHandleChange} class="form-control" />
+                                <input type="text" placeholder="First Name" value={this.state.firstName} name="firstName" onChange={this.textHandleChange} class="form-control" />
                             </div>
                             <div class="form-group">
                                 <label for="company" class=" form-control-label">Last Name</label>

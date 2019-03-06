@@ -1,5 +1,10 @@
-
+import  Cookies from "js-cookie";
 export default class Rest {
+
+//authorization
+
+    
+
 
     static AddNewProject(data){
 
@@ -101,6 +106,42 @@ export default class Rest {
    }
 
 
+     //get project team members
+  static getProjectActivity(id){
+    return  fetch(`project/getTasks/${id}`, {
+     method: 'GET'
+   })
+ }
+
+ static getUserActivity(){
+  return  fetch(`/project/userActivity`, {
+   method: 'GET',
+   headers: getHeader()
+
+ })
+}
+
+static updateTaskStatus(data){
+  return  fetch(`/project/updateTaskStatus`, {
+    method: 'PUT',
+    headers: getHeader(),
+    body:JSON.stringify(data) 
+  })
+}
+
+ //getHeader
 
 
+
+
+}
+
+const getHeader = ()=>{
+  const myHeaders = new Headers();
+   let accesData = Cookies.get("authtoken") ? JSON.parse(Cookies.get("authtoken") ) : {};
+  if(Object.keys(accesData).length){
+    myHeaders.append('authorization', accesData.token);
+  }
+  myHeaders.append('Content-Type', 'application/json');
+  return myHeaders;
 }

@@ -1,5 +1,19 @@
 import React from 'react';
 import ProjectTeam from './projectTeamList';
+import moment from "moment";
+
+let getPriorityClass = (p)=>{
+   // 
+   if(p==="Low"){
+       return " badge badge-success ";
+   }else if(p==="Medium"){
+    return " badge badge-warning ";
+   }else if(p==="High"){
+    return " badge badge-danger ";
+   }else{
+    return " badge badge-danger " ;
+   }
+}
 const BasicDetails = (props) => {
     return <div className="animated fadeIn">
         <div className="ui-typography">
@@ -7,13 +21,13 @@ const BasicDetails = (props) => {
                 <div className="col-md-12">
                     <div className="card">
                         <div className="card-header">
-                            <strong className="card-title" v-if="headerText">Typography</strong>
+                            <strong className="card-title" v-if="headerText">Project Info</strong>
                         </div>
                         <div className="card-body">
                             <div className="typo-headers">
                                 <div className="row">
                                     <div className="col-10">
-                                        <h6 className="pb-4 display-5">Random Tiny Heading H6</h6>
+                                      
                                     </div>
                                     <div className="col-2">
                                         Start Date<br />
@@ -65,20 +79,55 @@ const BasicDetails = (props) => {
                                     </div>
                                 </div>
                                 <div className="row">
-                                    <div className="col-12">
+                                    <div className="col-12" style={{"borderBottom" :" 2px solid"}}>
                                        <div className="col-9"><h2 className="display-5 my-3"><span><i class="fa fa-desktop"></i></span> Activity</h2>
                                            </div> 
-                                           <div className="col-3 float-right">
-                                                <button type="button" onClick={props.addNewStoryHandeler} class="btn btn-secondary btn-sm"><i class="fa fa-plus"></i>&nbsp; Story</button>
+                                           <div className="col-3">
+                                                <button type="button" onClick={props.addNewStoryHandeler} class="btn btn-secondary btn-sm float-right mt-4"><i class="fa fa-plus"></i>&nbsp; Story</button>
                                             </div>
                                     </div>
-                                   <div className="col-12"><hr /></div> 
+                                  
                                     <div className="col-12">
                                         <ul class="list-group list-group-flush">
-                                            <li class="list-group-item"><a href="#"> <i class="fa fa-envelope-o"></i> Mail Inbox <span class="badge badge-primary pull-right">10</span></a></li>
+                                            {/* <li class="list-group-item"><a href="#"> <i class="fa fa-envelope-o"></i> Mail Inbox <span class="badge badge-primary pull-right">10</span></a></li>
                                             <li class="list-group-item"><a href="#"> <i class="fa fa-tasks"></i> Recent Activity <span class="badge badge-danger pull-right">15</span></a></li>
+                                           
                                             <li class="list-group-item"><a href="#"> <i class="fa fa-bell-o"></i> Notification <span class="badge badge-success pull-right">11</span></a></li>
-                                            <li class="list-group-item"><a href="#"> <i class="fa fa-comments-o"></i> Message <span class="badge badge-warning pull-right r-activity">03</span></a></li>
+                                            <li class="list-group-item"><a href="#"> <i class="fa fa-comments-o"></i> Message <span class="badge badge-warning pull-right r-activity">03</span></a></li> */}
+                                       
+                                            {
+                                                props.recentActivity &&  props.recentActivity.tasks && props.recentActivity.tasks.map((activity,idx)=>{
+                                                    return  <li class="list-group-item" key={idx}>
+                                                    {/* <a href="#"> <i class="fa fa-tasks"></i> {activity.title}
+                                                    
+                                                    <span class="badge badge-danger pull-right">15</span></a> */}
+
+                                                        <div class="row">
+                                                            <div class="col-5">
+                                                                <a href="#"> <i class="fa fa-tasks"></i> {activity.title}   </a>
+                                                            </div>
+                                                            <div class="col-2">
+                                                                <span> {activity.assignTo.userName}</span>
+                                                            </div>
+                                                            <div className="col-3">
+                                                                <span className="float-left">Created Date<br />
+                                                                    { moment( activity.createdAt).format("MM/DD/YYYY")}
+                                                                    
+                                                                    </span>
+                                                                <span className="float-right">Due Date<br />
+                                                                { moment( activity.dueDate).format("MM/DD/YYYY")}</span>
+                                                            </div>
+                                                            <div class="col-2">
+                                                                <span className={`${getPriorityClass(activity.priority)}  pull-right`}>{activity.priority}</span>
+                                                            </div>
+                                                        </div>
+
+                                                    
+                                                    
+                                                    </li>;
+                                                })
+                                            }
+
                                         </ul>
                                     </div>
                                 </div>

@@ -8,6 +8,7 @@ import ApiService from '../../api/rest'
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import Select from 'react-select';
+import { toast } from 'react-toastify';
 
 
 class AddNewStoryPopUp extends React.Component {
@@ -67,6 +68,7 @@ class AddNewStoryPopUp extends React.Component {
 
             })
             .catch((err) => {
+                
             })
     }
 
@@ -102,17 +104,30 @@ data.append('description', this.state.description);
 data.append('project', this.props.projectId);
 
 ApiService.newStory(data)
-.then(res=>{res.json()})
+.then(res=>{
+    if (!res.ok) {
+        throw Error(res);
+    }   
+    return res.json()
+})
 .then(response=>{
-    console.log.log(response)
+    console.log.log(response);
+    this.props.onSave && this.props.onSave(this.state);
+    this.onClose();
+    toast.success("Task Created", {
+        position: toast.POSITION.TOP_RIGHT
+      });
 })
 .catch(e=>{
-    console.log("error occured..>!!")
+    console.log("error occured..>!!");
+    toast.error(e.statusText ? e.statusText :  "Error Notification !", {
+        position: toast.POSITION.TOP_RIGHT
+      });
 })
 
 
 //this.props.onSave && this.props.onSave(this.state);
-        e.preventDefault()
+        e.preventDefault();
     }
 
 
@@ -121,7 +136,7 @@ ApiService.newStory(data)
             this.setState({priority:data.priority})
         }
         else{
-            this.setState({assignTo:data._id})
+            this.setState({assignTo:data.user._id})
         }
         console.log(data,type)
     }

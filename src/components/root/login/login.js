@@ -1,5 +1,8 @@
 import React from 'react';
-import ApiService from "../../../api/rest"
+import ApiService from "../../../api/rest";
+import  Cookies from "js-cookie";
+
+//var Cookies = require('js-cookie');
 
 class Login extends React.Component {
     constructor(props) {
@@ -21,11 +24,22 @@ class Login extends React.Component {
     }
 
     doLogin = (e)=>{
+
+     
       ApiService.login(this.state)
       .then(res => res.json())
         .then((response)=>{
             console.log(response);
+            let date = new Date();
+            date.setHours(date.getHours()+1);
+            //date.setDate(date.getDate() + 1);
+            let loginInfo={};
+            loginInfo.token = response.token;
+            loginInfo.role =  response.role;
+
+            Cookies.set('authtoken', JSON.stringify(loginInfo), { expires: date });
            // response &&  this.setState({userList:response})
+           this.props.history.push("/");
 
         })
         .catch((err)=>{
