@@ -37,7 +37,7 @@ const Header = (props) => (
                         </div>
 
 
-                        <div className="dropdown for-message">
+                        {/* <div className="dropdown for-message">
                             <button className="btn btn-secondary dropdown-toggle" type="button" id="message" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i className="ti-email"></i>
                                 <span className="count bg-primary">9</span>
@@ -77,7 +77,7 @@ const Header = (props) => (
                                     </span>
                                 </a>
                             </div>
-                        </div>
+                        </div> */}
                     </div>
                 </div>
                 <div className="col-sm-5">
@@ -97,7 +97,7 @@ const Header = (props) => (
                         </div>
                     </div>
 
-                    <div className="language-select dropdown" id="language-select">
+                    {/* <div className="language-select dropdown" id="language-select">
                         <a className="dropdown-toggle" href="#" data-toggle="dropdown" id="language" aria-haspopup="true" aria-expanded="true">
                             <i className="flag-icon flag-icon-us"></i>
                         </a>
@@ -115,7 +115,7 @@ const Header = (props) => (
                                 <i className="flag-icon flag-icon-it"></i>
                             </div>
                         </div>
-                    </div>
+                    </div> */}
 
                 </div>
             </div>

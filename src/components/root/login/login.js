@@ -36,6 +36,8 @@ class Login extends React.Component {
             let loginInfo={};
             loginInfo.token = response.token;
             loginInfo.role =  response.role;
+            loginInfo.userName =  response.userName;
+            loginInfo.projectId =  response.userProjectId;
 
             Cookies.set('authtoken', JSON.stringify(loginInfo), { expires: date });
            // response &&  this.setState({userList:response})

@@ -6,6 +6,7 @@ import React, { Component } from 'react';
 import SideBar from '../sidebar/sidebar';
 import Header from '../header/header';
 import BreadCrumbs from '../breadcrumb/breadcrumb';
+import Chat from "../chat/chat";
 
 class Layout extends Component {
 
@@ -29,6 +30,7 @@ console.log("this",this.props.location,"/login");
                      <div className="content mt-3">
                              {this.props.children}
                      </div>
+                     <Chat />
                  </div>
              </div>  
              : this.props.children
