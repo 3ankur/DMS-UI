@@ -10,7 +10,9 @@ class Chat extends React.Component{
             messages:[],
             txtMsg:""
         }
-        this.socket = io('127.0.0.1:8001'); //192.168.0.105 localhost  172.30.16.25
+        //
+        //127.0.0.1:8001
+        this.socket = io('https://dms-rest-api.herokuapp.com/'); //192.168.0.105 localhost  172.30.16.25
        
     
        

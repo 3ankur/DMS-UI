@@ -129,6 +129,16 @@ static updateTaskStatus(data){
   })
 }
 
+//
+
+static taskdetail(id){
+  return  fetch(`project/taskdetail/${id}`, {
+   method: 'GET',
+   headers: getHeader()
+
+ })
+}
+
  //getHeader
 
 

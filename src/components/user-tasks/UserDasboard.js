@@ -2,6 +2,7 @@ import React from "react";
 import ApiService from "../../api/rest";
 import { toast } from 'react-toastify';
 import TaskCard from "./taskCard";
+import TaskDetails from "./taskDetails";
 
 class UserDashboard extends React.Component{
     constructor(props){
@@ -9,7 +10,8 @@ class UserDashboard extends React.Component{
         this.state={
             todoList:[],
             doneList:[],
-            inPogressList:[]
+            inPogressList:[],
+            taskDetails:{}
         }
     }
 
@@ -48,6 +50,7 @@ class UserDashboard extends React.Component{
         
       this.getUserBoardActivity();
     }
+    
 
     updateTaskStatus = (taskInfo,updatedStatus)=>{
         if(taskInfo && updatedStatus){
@@ -65,6 +68,20 @@ class UserDashboard extends React.Component{
                 console.log(err);
             })
         }
+    }
+
+    getTaskDetails = (id)=>{
+        ApiService.taskdetail(id)
+        .then((res)=>{
+           return  res.json();
+        })
+        .then((response)=>{
+            console.log("2323====>",response);
+            this.setState({taskDetails:response});
+        })
+        .catch((e)=>{
+            console.log(e);
+        })
     }
 
     onTaskDrop = (e,dropType)=>{
@@ -93,7 +110,7 @@ class UserDashboard extends React.Component{
    <div className="col-12" >
       <div className="row" style={{"background": "#FFF","height": "400px"}}>
 
-                    <div className="col-12">
+                    <div className={`${Object.keys(this.state.taskDetails).length ? "col-8" : "col-12"}`}>
                         <div className="col-4">
                             <label>Todo</label>
                                 <div className="task_list" 
@@ -108,6 +125,7 @@ class UserDashboard extends React.Component{
                                         taskInfo={task}
                                         isDraggable={true}
                                         onDragStart={this.onDragStart}
+                                        taskDetailInfo={this.getTaskDetails}
                                          />
                                     })
                                 }
@@ -131,6 +149,7 @@ class UserDashboard extends React.Component{
                                         taskInfo={task}
                                         isDraggable={true}
                                         onDragStart={this.onDragStart}
+                                        taskDetailInfo={this.getTaskDetails}
                                          />
                                     })
                                 }
@@ -149,6 +168,7 @@ class UserDashboard extends React.Component{
                                         taskInfo={task}
                                         isDraggable={true}
                                         onDragStart={this.onDragStart}
+                                        taskDetailInfo={this.getTaskDetails}
                                          />
                                     })
                                 }
@@ -156,8 +176,14 @@ class UserDashboard extends React.Component{
                         </div>
                     </div>
 
-      {/* <div className="col-4">
-      </div> */}
+      {
+          this.state.taskDetails && Object.keys(this.state.taskDetails).length &&  
+      <div className="col-4">
+        <TaskDetails
+            taskDetail={this.state.taskDetails.info}
+        />
+      </div>
+      }
 
       </div>
    </div>

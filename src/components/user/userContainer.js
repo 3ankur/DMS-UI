@@ -70,7 +70,7 @@ const UserContainer = props => {
                         minRows={
                           props.userList && props.userList.length > 5
                             ? 5
-                            : props.userList.length
+                            : 1
                         }
                         className="-striped -highlight"
                       />

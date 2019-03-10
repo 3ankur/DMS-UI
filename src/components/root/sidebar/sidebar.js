@@ -1,6 +1,7 @@
 import React from 'react';
 import logoImg from '../../../images/logo.png';
 import logo2 from '../../../images/logo2.png';
+//import dmslogo from "../../../images/DMS_IMGE.jpg"
 
 const SideBar = (props) => {
     return <aside id="left-panel" className="left-panel">

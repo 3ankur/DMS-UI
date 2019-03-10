@@ -15,7 +15,12 @@ class Dashboard extends Component{
 
     getProjectList = () =>{
         ApiService.getProjectList()
-        .then(res => res.json())
+        .then( (res) =>{
+            console.log(res);
+            if(!res.ok){
+                throw Error("issue")
+            }
+           return res.json()} )
         .then((response)=>{
             console.log(response);
             response &&  this.setState({projectList:response})
@@ -39,7 +44,7 @@ this.getProjectList();
             ApiService.AddNewProject(info)
             .then((response)=>response.json())
             .then((res)=>{ console.log(res)
-              res && this.setState({projectList:res.project})
+              res && this.setState({projectList:res.project || []})
             })
             .catch((err)=>{  })
              this.props.modalAction.hideModal();
@@ -60,7 +65,7 @@ this.getProjectList();
             </div>
             <div className="row">
             {
-                 this.state.projectList.map((pdata)=>{
+                 this.state.projectList && this.state.projectList.map((pdata)=>{
                     return <ProjectCard key={pdata._id} info={pdata} /> 
                 })
             }
