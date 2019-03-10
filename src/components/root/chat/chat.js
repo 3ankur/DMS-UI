@@ -102,7 +102,7 @@ class Chat extends React.Component{
                }
                 
 {
-    !this.state.isChatOn &&     <button class="open-button" onClick={(e) => { this.openForm(e) }}>Chat</button>
+    !this.state.isChatOn &&     <button className="open-button" onClick={(e) => { this.openForm(e) }}>Chat</button>
 }
             
             

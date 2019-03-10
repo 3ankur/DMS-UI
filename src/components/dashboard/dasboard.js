@@ -18,7 +18,7 @@ class Dashboard extends Component{
         .then( (res) =>{
             console.log(res);
             if(!res.ok){
-                throw Error("issue")
+                throw Error(res)
             }
            return res.json()} )
         .then((response)=>{
@@ -27,7 +27,7 @@ class Dashboard extends Component{
 
         })
         .catch((err)=>{
-
+            console.log(err);
         })
     }
 
@@ -59,7 +59,7 @@ this.getProjectList();
             <div className="row" style={{backgroundColor:"#FFF",marginBottom:"12px"}}>
             
             <div className="col-md-12">
-            <button onClick={(e)=>{this.addNewProject(e)}} type="button" class="btn btn-success btn-lg active pull-right"><i className="fa fa-plus"></i> Project</button>
+            <button onClick={(e)=>{this.addNewProject(e)}} type="button" className="btn btn-success btn-lg active pull-right"><i className="fa fa-plus"></i> Project</button>
             </div>
             <hr/>
             </div>

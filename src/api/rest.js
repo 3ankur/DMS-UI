@@ -1,14 +1,18 @@
 import  Cookies from "js-cookie";
+
+var API_END_POINT = "";
+
+if(window.location.href.indexOf("localhost")>-1){
+  API_END_POINT = "http://127.0.0.1:8001/";
+} 
+else{
+  API_END_POINT = "https://dms-rest-api.herokuapp.com/";
+}
 export default class Rest {
-
-//authorization
-
-    
-
 
     static AddNewProject(data){
 
-     return  fetch("project", {
+     return  fetch(API_END_POINT+"project", {
             method: 'POST', 
             body: JSON.stringify(data), // data can be `string` or {object}!
             headers:{
@@ -18,27 +22,28 @@ export default class Rest {
     }
 
     static getProjectList(){
-      return  fetch("project", {
-            method: 'GET'
+      return  fetch(API_END_POINT+"project", {
+            method: 'GET',
+            
           })
     }
 
     //get the all users 
     static getUserList(){
-      return  fetch("user", {
+      return  fetch(API_END_POINT+"user", {
             method: 'GET'
           })
     }
    //get user roles
    static getUserRoles(){
-    return  fetch("user/role", {
+    return  fetch(API_END_POINT+"user/role", {
       method: 'GET'
     })
    }
 
    //add users 
    static addUser(userData){
-    return  fetch("user", {
+    return  fetch(API_END_POINT+"user", {
           method: 'POST',
           redirect: "follow", // manual, *follow, error
           referrer: "no-referrer", // no-referrer, *client
@@ -50,14 +55,14 @@ export default class Rest {
   }
    
   static validateUserName(uname){
-    return  fetch("user/validateUserName/"+uname, {
+    return  fetch(API_END_POINT+"user/validateUserName/"+uname, {
       method: 'GET'
     })
   }
 
   //add user to project
   static addUserIntoProject(data){
-    return  fetch("project/addUserIntoProject", {
+    return  fetch(API_END_POINT+"project/addUserIntoProject", {
       method: 'POST',
       redirect: "follow", // manual, *follow, error
       referrer: "no-referrer", // no-referrer, *client
@@ -70,14 +75,14 @@ export default class Rest {
 
   //get project team members
   static getProjectTeamByPId(id){
-     return  fetch(`project/team/${id}`, {
+     return  fetch(API_END_POINT+`project/team/${id}`, {
       method: 'GET'
     })
   }
 
     //get story priority
     static getStoryPriority(id){
-      return  fetch(`project/storyPriority`, {
+      return  fetch(API_END_POINT+`project/storyPriority`, {
        method: 'GET'
      })
    }
@@ -86,7 +91,7 @@ export default class Rest {
    
     //get story priority
     static login(data){
-      return  fetch(`user/login`, {
+      return  fetch(API_END_POINT+`user/login`, {
         method: 'POST',
         redirect: "follow", // manual, *follow, error
         referrer: "no-referrer", // no-referrer, *client
@@ -99,7 +104,7 @@ export default class Rest {
 
 
    static newStory(data){
-    return fetch('project/addTask', {
+    return fetch(API_END_POINT+'project/addTask', {
       method: 'POST',
       body: data
     })
@@ -108,13 +113,13 @@ export default class Rest {
 
      //get project team members
   static getProjectActivity(id){
-    return  fetch(`project/getTasks/${id}`, {
+    return  fetch(API_END_POINT+`project/getTasks/${id}`, {
      method: 'GET'
    })
  }
 
  static getUserActivity(){
-  return  fetch(`/project/userActivity`, {
+  return  fetch(API_END_POINT+`project/userActivity`, {
    method: 'GET',
    headers: getHeader()
 
@@ -122,7 +127,7 @@ export default class Rest {
 }
 
 static updateTaskStatus(data){
-  return  fetch(`/project/updateTaskStatus`, {
+  return  fetch(API_END_POINT+`/project/updateTaskStatus`, {
     method: 'PUT',
     headers: getHeader(),
     body:JSON.stringify(data) 
@@ -132,18 +137,13 @@ static updateTaskStatus(data){
 //
 
 static taskdetail(id){
-  return  fetch(`project/taskdetail/${id}`, {
+  return  fetch(API_END_POINT+`project/taskdetail/${id}`, {
    method: 'GET',
    headers: getHeader()
 
  })
 }
-
  //getHeader
-
-
-
-
 }
 
 const getHeader = ()=>{
@@ -153,5 +153,6 @@ const getHeader = ()=>{
     myHeaders.append('authorization', accesData.token);
   }
   myHeaders.append('Content-Type', 'application/json');
+  
   return myHeaders;
 }
