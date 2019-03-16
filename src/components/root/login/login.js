@@ -1,7 +1,7 @@
 import React from 'react';
 import ApiService from "../../../api/rest";
 import  Cookies from "js-cookie";
-
+import { toast } from 'react-toastify';
 //var Cookies = require('js-cookie');
 
 class Login extends React.Component {
@@ -13,13 +13,17 @@ class Login extends React.Component {
         }
     }
 
+    componentDidMount(){
+      Cookies.remove('authtoken', { path: '' }); // removed!
+    }
+
     emailChangeHandeler =(e)=>{
-      console.log(e.target.value)
+    //  console.log(e.target.value)
       this.setState({email:e.target.value})
     }
 
     passwordChangeHandeler =(e)=>{
-      console.log(e.target.value)
+    //  console.log(e.target.value)
       this.setState({password:e.target.value})
     }
 
@@ -41,43 +45,49 @@ class Login extends React.Component {
 
             Cookies.set('authtoken', JSON.stringify(loginInfo), { expires: date });
            // response &&  this.setState({userList:response})
-           this.props.history.push("/");
+         //  this.props.history.push("/");
+         setTimeout(()=>{
+            window.location.href="/";
+         },200)
 
         })
         .catch((err)=>{
+         toast.error("Something wrong", {
+            position: toast.POSITION.TOP_RIGHT
+          });
         })
       e.preventDefault();
     }
 
     render() {
         return (
-            <div class="sufee-login d-flex align-content-center flex-wrap">
-            <div class="container">
-               <div class="login-content">
-                  <div class="login-logo">
+            <div className="sufee-login d-flex align-content-center flex-wrap">
+            <div className="container">
+               <div className="login-content">
+                  <div className="login-logo">
                      <a href="index.html">
-                     <img class="align-content" src="images/logo.png" alt="" />
+                     <img className="align-content" src="images/logo.png" alt="" />
                      </a>
                   </div>
-                  <div class="login-form">
+                  <div className="login-form">
                      <form onSubmit={(e)=> this.doLogin(e)}>
-                        <div class="form-group">
+                        <div className="form-group">
                            <label>Email address</label>
-                           <input value={this.state.email} onChange={(e)=>{this.emailChangeHandeler(e)}} type="email" class="form-control" placeholder="Email" />
+                           <input value={this.state.email} onChange={(e)=>{this.emailChangeHandeler(e)}} type="email" className="form-control" placeholder="Email" />
                         </div>
-                        <div class="form-group">
+                        <div className="form-group">
                            <label>Password</label>
-                           <input value={this.state.password}  onChange={(e)=>{this.passwordChangeHandeler(e)}} type="password" class="form-control" placeholder="Password" />
+                           <input value={this.state.password}  onChange={(e)=>{this.passwordChangeHandeler(e)}} type="password" className="form-control" placeholder="Password" />
                         </div>
-                        <div class="checkbox">
+                        <div className="checkbox">
                            <label>
                            <input type="checkbox" /> Remember Me
                            </label>
-                           <label class="pull-right">
+                           <label className="pull-right">
                            <a href="#">Forgotten Password?</a>
                            </label>
                         </div>
-                        <button onClick={(e)=> this.doLogin(e)} type="submit" class="btn btn-success btn-flat m-b-30 m-t-30">Sign in</button>
+                        <button onClick={(e)=> this.doLogin(e)} type="submit" className="btn btn-success btn-flat m-b-30 m-t-30">Sign in</button>
                      </form>
                   </div>
                </div>

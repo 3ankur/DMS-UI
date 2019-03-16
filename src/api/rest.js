@@ -127,7 +127,7 @@ export default class Rest {
 }
 
 static updateTaskStatus(data){
-  return  fetch(API_END_POINT+`/project/updateTaskStatus`, {
+  return  fetch(API_END_POINT+`project/updateTaskStatus`, {
     method: 'PUT',
     headers: getHeader(),
     body:JSON.stringify(data) 

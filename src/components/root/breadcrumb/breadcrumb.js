@@ -14,8 +14,8 @@ const Breadcrum = (props)=>{
                     <div className="page-title">
                         <ol className="breadcrumb text-right">
                             <li><a href="#">Dashboard</a></li>
-                            <li><a href="#">Charts</a></li>
-                            <li className="active">Chartjs</li>
+                            {/* <li><a href="#">Charts</a></li>
+                            <li className="active">Chartjs</li> */}
                         </ol>
                     </div>
                 </div>

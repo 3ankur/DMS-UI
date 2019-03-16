@@ -10,9 +10,9 @@ import Chat from "../chat/chat";
 
 class Layout extends Component {
 
-    constructor(props){
-        super(props);
-    }
+    // constructor(props){
+    //     super(props);
+    // }
    
     componentDidMount() {
 console.log("this",this.props.location,"/login");

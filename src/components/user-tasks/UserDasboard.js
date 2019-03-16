@@ -104,11 +104,15 @@ class UserDashboard extends React.Component{
         e.preventDefault();
     }
 
+    onCloseDetail = ()=>{
+        this.setState({taskDetails:{}});
+    }
+
     render(){
         return(
            
    <div className="col-12" >
-      <div className="row" style={{"background": "#FFF","height": "400px"}}>
+      <div className="row" style={{"background": "#FFF","height": "450px"}}>
 
                     <div className={`${Object.keys(this.state.taskDetails).length ? "col-8" : "col-12"}`}>
                         <div className="col-4">
@@ -181,6 +185,7 @@ class UserDashboard extends React.Component{
       <div className="col-4">
         <TaskDetails
             taskDetail={this.state.taskDetails.info}
+            onCloseDetail={this.onCloseDetail}
         />
       </div>
       }

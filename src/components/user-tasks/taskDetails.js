@@ -31,8 +31,14 @@ class TaskDetails extends React.Component{
             //     </div>
             // <header>{this.props.taskDetail.title}</header>
             // </div>
-
+            <div className="row">
+            <div className="col-12">
+            <span><i className="fa fa-envelope-open"></i></span>
+                    <span className="m-1">Ankur Board / </span><span>EL-01</span>
+                    <span onClick={this.props.onCloseDetail} className="float-right"><i className="fa fa-close"></i></span>
+                </div>
             <div className="mineside">
+                
                 <div className="row">
                     <div className="min_cont">
 
@@ -47,15 +53,8 @@ class TaskDetails extends React.Component{
                         </div> */}
 
                         <div class=" col-12" id="main">
-                            
                             <div className="row">
-                            <div className="col-12">
-                        <span><i className=""></i></span>
-                      <span className="m-1">Ankur Board / </span><span>EL-01</span>
-                         <span className="float-right"><i className="fa fa-close"></i></span>
-                     </div>
-
-                            <header className="m-2">{this.props.taskDetail.title}</header>
+                            <p className="mr-2 p-3">{this.props.taskDetail && this.props.taskDetail.title}</p>
                                 <div className="col-12">
                                     <h6>Details</h6>
                                     <div className="">
@@ -105,7 +104,6 @@ class TaskDetails extends React.Component{
                                         <div className="progress mb-2">
                                             <div className="progress-bar bg-primary" role="progressbar" style={{"width": "25%"}} aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
                                         </div>
-
                                     </div>
                                 </div>
                             </div>
@@ -113,6 +111,7 @@ class TaskDetails extends React.Component{
 
                     </div>
                 </div>
+            </div>
             </div>
         )
     }

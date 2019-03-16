@@ -1,5 +1,5 @@
 import React from 'react';
-import adminImg from '../../../images/admin.jpg';
+import adminImg from '../../../images/avtar.png';
 const Header = (props) => (
     <div>
      <header id="header" className="header">
