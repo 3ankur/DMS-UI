@@ -17,7 +17,7 @@ class Chat extends React.Component{
         const userInfo = Cookies.get("authtoken") ?  JSON.parse(Cookies.get("authtoken")) : null ;
         
         //127.0.0.1:8001
-        let token = "?token="+userInfo.userName
+        let token = userInfo ? "?token="+userInfo.userName : "";
         let SERVER_URL = "https://dms-rest-api.herokuapp.com"+token;
         if(window.location.href.indexOf("localhost")>-1){
             SERVER_URL = "http://127.0.0.1:8001"+token;

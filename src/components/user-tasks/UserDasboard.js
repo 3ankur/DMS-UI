@@ -187,7 +187,7 @@ class UserDashboard extends React.Component{
             taskDetail={this.state.taskDetails.info}
             onCloseDetail={this.onCloseDetail}
         />
-      </div>
+      </div> 
       }
 
       </div>
