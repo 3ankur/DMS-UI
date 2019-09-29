@@ -2,10 +2,12 @@
   "name": "reactapp1.0",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://3ankur.github.io/DMS-UI",
   "dependencies": {
     "axios": "^0.18.0",
     "bootstrap": "^4.2.1",
     "cookies": "^0.7.3",
+    "gh-pages": "^2.1.1",
     "js-cookie": "^2.2.0",
     "moment": "^2.24.0",
     "popper.js": "^1.14.6",
@@ -31,7 +33,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": "react-app"
